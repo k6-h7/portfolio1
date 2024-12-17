@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <script src="loading.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Shippori+Antique&family=Shippori+Mincho:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div id="wrap">
+    <!-- ローディング画面-->
+    <div class="loading">
+      <div class="loading-text">
+        <span class="loading-text-words">L</span>
+        <span class="loading-text-words">O</span>
+        <span class="loading-text-words">A</span>
+        <span class="loading-text-words">D</span>
+        <span class="loading-text-words">I</span>
+        <span class="loading-text-words">N</span>
+        <span class="loading-text-words">G</span>
+      </div> 
+    </div>
+    <header>
+      <a class="title" href="index.html"><h1>Portfolio</h1></a>
+      <input type="checkbox" id="navBtn" class="nav-toggle">
+      <label for="navBtn" class="open"><span></span></label>
+      <nav class="main-menu">
+        <ul>
+          <li><a href="about.html">このサイトについて</a></li>
+          <li><a href="gallery.html">作品集</a></li>
+          <li><a href="university.html">大学生活</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+
+      <div class="stars">
+        <img src="images/moon.png" id="moon">
+        <div class="scroll">
+          <span></span>
+        </div>
+      </div>
+      
+
+      <h2 class="slide-in">作品</h2>
+      <div class="top-gallery">
+        <figure class="top-images"><img src="images/rgb-vlr.jpg" class="top-image" alt=""></figure>
+          <div class="character">
+            <p class="work-title">Virtual Living Room</p>
+            <p class="text">ここにテキストが入りますここにテキストが入りますここにテキストが入りますここにテキストが入りますここにテキストが入りますここにテキストが入ります</p>
+          </div>
+      </div>
+      <div class="top-gallery" id="top-gallery-left">
+          <figure class="top-images"><img src="images/guide.jpg" class="top-image" alt=""></figure>
+            <div class="character">
+              <p class="work-title">経路案内</p>
+              <p class="text">ここにテキストが入りますここにテキストが入りますここにテキストが入りますここにテキストが入りますここにテキストが入りますここにテキストが入ります</p>
+            </div>
+      </div>
+      <div class="top-gallery">
+        <figure class="top-images"><img src="images/vi.jpg" class="top-image" alt=""></figure>
+          <div class="character">
+            <p class="work-title">クオーレVI計画</p>
+            <p class="text">ここにテキストが入りますここにテキストが入りますここにテキストが入りますここにテキストが入りますここにテキストが入りますここにテキストが入ります</p>
+          </div>
+      </div>
+    
+    </main>
+
+    <footer>
+      <p>&copy; Hinari Koroki 2024</p>
+    </footer>
+  </div>
+</body>
+
+</html>
