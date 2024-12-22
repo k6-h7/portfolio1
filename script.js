@@ -1,25 +1,49 @@
 // JavaScript
-window.addEventListener("DOMContentLoaded", () => {
-    // 星を表示するための親要素を取得
-    const stars = document.querySelector(".stars");
-  
-    // 星を生成する関数
-    const createStar = () => {
-      const starEl = document.createElement("span");
-      starEl.className = "star";
-      const minSize = 0.5; // 星の最小サイズを指定
-      const maxSize = 2.5; // 星の最大サイズを指定
-      const size = Math.random() * (maxSize - minSize) + minSize;
-      starEl.style.width = `${size}px`;
-      starEl.style.height = `${size}px`;
-      starEl.style.left = `${Math.random() * 100}%`;
-      starEl.style.top = `${Math.random() * 100}%`;
-      starEl.style.animationDelay = `${Math.random() * 10}s`;
-      stars.appendChild(starEl);
-    };
-  
-    // for文で星を生成する関数を指定した回数呼び出す
-    for (let i = 0; i <= 500; i++) {
-      createStar();
-    }
-  });
+
+// h2 text
+const textShow = (entries, obs) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const textAnimation = entry.target;
+            const textKeyFrames = [
+                { opacity: 0, transform: 'translateY(30px)' },
+                { opacity: 1, transform: 'translateY(0)' }
+            ];
+            const textOptions = {
+                duration: 1000,
+                easing: 'ease-out',
+                fill: 'forwards', // アニメーション終了後に状態を保持
+            };
+            textAnimation.animate(textKeyFrames, textOptions);
+            obs.unobserve(entry.target); // 一度だけアニメーションを実行
+        }
+    });
+};
+
+const textObserver = new IntersectionObserver(textShow);
+textObserver.observe(document.querySelector('.textAnimation'));
+
+//top-gallery
+const show = (entries, obs) => {
+    entries.forEach((entry) => {
+        //交差している時だけ
+        if(entry.isIntersecting){
+            const keyframes = {
+                opacity: [0, 1],
+                translate: ['0 150px', 0]
+            }
+            entries[0].target.animate(keyframes, 2000);
+
+            //一度表示されたら止める
+            obs.unobserve(entry.target);
+        }
+    });
+}
+
+const observer = new IntersectionObserver(show);
+
+//監視対象
+const topGalleries = document.querySelectorAll('.top-gallery');
+topGalleries.forEach(topGallery =>{
+    observer.observe(topGallery);
+});

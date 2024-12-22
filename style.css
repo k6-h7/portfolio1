@@ -14,8 +14,10 @@ body {
     margin: 0 auto;
 }
 
-.slide-in{
+.textAnimation{
     text-align: center;
+    margin: 15vh 0 5vh 0;
+    opacity: 0;
 }
 /* loading */
 
@@ -70,6 +72,11 @@ body {
     color: #fff;
     z-index: 100;
 }
+.title h1 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin: 3vh 0;
+}
 /* menu */
 .open {
     position:fixed;
@@ -116,7 +123,7 @@ body {
 }
 .main-menu {
     width: 100%;
-    height: 30%;
+    height: 50%;
     position: fixed;
     top: -50%;
     left: 0;
@@ -124,8 +131,15 @@ body {
     background-image: linear-gradient(0deg, rgba(0, 0, 0, 0), #080f1c);
     transition: all 0.5s;
 }
+.main-menu h1 {
+    font-size: 2rem;
+    color: #fff;
+}
 .main-menu ul {
-    padding: 70px 10px 0;
+    padding: 0 20px;
+}
+.main-menu li {
+    list-style: none;
 }
 .main-menu ul li a {
     display: block;
@@ -152,12 +166,12 @@ body {
 .stars {
     position: relative;
     width: 100%; /* 星空の横幅 */
-    height: 80vh; /* 星空の縦幅 */
+    height: 100vh; /* 星空の縦幅 */
     background-image: linear-gradient(0deg, rgba(255, 255, 255, 0),rgba(0,175,204,0.9), #115d89, #001e43, #080f1c);
     overflow: hidden; /* 星が枠外にはみ出すのを防ぐ */
   }
   
-  /* 星のスタイル */
+/* 星のスタイル */
 .star {
     position: absolute;
     display: block;
@@ -189,7 +203,7 @@ body {
 .scroll {
     position: absolute;
     right: 50%;
-    top: 60vh;
+    top: 80vh;
     writing-mode: vertical-rl;
   }
 /* 線のアニメーション部分 */
@@ -224,7 +238,20 @@ body {
       transform-origin: 0 100%;
     }
 }
-
+/* top-about */
+.top-about {
+    padding: 10px;
+    text-align: center;
+    margin: 10vh 0 5vh 0;
+}
+.top-me {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 50%;
+    width: 50%;
+    opacity: 0.9;
+}
 
 /* top gallery */
 .top-gallery {
@@ -254,6 +281,48 @@ body {
     padding: 0;
 }
 
+/* ボタン */
+.btn {
+    display: flex;
+    margin: 0 2vw;
+    padding: 10px;
+}
+.btn-text {
+    color: #115d89;
+    font-size: 1.2rem;
+    position: relative;
+    padding-left: 30px;
+    margin-left: auto;
+    display: block;
+    width: fit-content;
+}
+.btn-text::before {
+    content: "";
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 3px;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    background: #115d89;
+}
+.btn-text::after {
+    content: "";
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 8px;
+    width: 7px;
+    height: 7px;
+    border-top: 3px solid #fff;
+    border-right: 3px solid #fff;
+    transform: rotate(45deg);
+}
+
+
 /* レスポンシブ */
 /* スマホ用 */
 @media screen and (max-width: 600px) {
@@ -263,6 +332,15 @@ body {
         position: absolute;
         top: 60px;
         right: 5px;
+    }
+    .main-menu h1 {
+        font-size: 2rem;
+        color: #fff;
+        margin: 3vh 0;
+    }
+    .main-menu ul {
+        position: absolute;
+        margin: 0;
     }
 }
 
@@ -280,13 +358,17 @@ body {
         justify-content: right;
         position: relative;
         background-image: none;
+        margin: 2.5vh 0 0 0;
         left: 0;
         top: 0;
+    }
+    .main-menu h1 {
+        display: none;
     }
     .main-menu ul {
         padding: 0;
         margin-right: 15px;
-        margin: 25px 18px 5px 0;
+        margin: 1vh 2vw 5px 0;
     }
     .main-menu ul li {
         list-style: none;
@@ -301,16 +383,45 @@ body {
     }
     .stars {
         box-shadow: inset 0 10px 10px 3px white;
+        height: 80vh;
+    }
+    .scroll {
+        top: 60vh;
+    }
+    .top-me {
+        width: 40%;
+    }
+    .top-gallery {
+        margin: 20px 5vw;
+    }
+}
+
+/* コンピュータ用 1025px以上〜 */
+@media all and (min-width: 1025px) {
+    /* top-about */
+    .top-about {
+        display: flex;
+        justify-content: center;
+    }
+    .about-p {
+        margin: auto 0 auto 50px;
+        text-align: left;
+    }
+    .top-me {
+        width: 25%;
+        overflow: hidden;
+        position: relative;
     }
     /* top gallery */
     .top-gallery{
         display: flex;
+        margin: 20px 0;
     }
     #top-gallery-left {
         flex-direction:row-reverse
     }
     .top-gallery .top-images {
-        width: 40%;
+        width: 50%;
         overflow: hidden;
         position: relative;
     }
@@ -319,9 +430,4 @@ body {
         margin: auto 2vw;
         padding: 0;
     }
-}
-
-/* コンピュータ用 1025px以上〜 */
-@media all and (min-width: 1025px) {
-
 }

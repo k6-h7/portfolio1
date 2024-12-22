@@ -10,15 +10,23 @@ document.addEventListener("DOMContentLoaded", function () {
   // 2回目以降のアクセス処理
   if (sessionStorage.getItem('access')) {
     loadingScreen.classList.add('is-active');
-    /* setTimeout(() => {
-      fadeOut(loadingScreen, 300); // フェードアウト処理 (300ms)
-    }, 2000); // 2秒後に実行 */
   } else {
-    // 初回アクセス時
     sessionStorage.setItem('access', 'true');
-    setTimeout(() => {
+
+    // 4秒間の最低表示時間
+    const minimumDisplayTime = new Promise((resolve) => {
+      setTimeout(resolve, 4000); // 4秒後に完了
+    });
+
+    // ページの主要コンテンツが読み込まれるのを待つ
+    const pageLoaded = new Promise((resolve) => {
+      window.addEventListener('load', resolve); // ページ全体の読み込み完了時に実行
+    });
+
+    // 両方の条件が満たされてからフェードアウト
+    Promise.all([minimumDisplayTime, pageLoaded]).then(() => {
       fadeOut(loadingScreen, 600); // フェードアウト処理 (600ms)
-    }, 4000); // 4秒後に実行
+    });
   }
 
   // 個別文字アニメーション設定
