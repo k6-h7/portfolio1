@@ -21,7 +21,9 @@ const textShow = (entries, obs) => {
 };
 
 const textObserver = new IntersectionObserver(textShow);
-textObserver.observe(document.querySelector('.textAnimation'));
+document.querySelectorAll('.textAnimation').forEach((element) => {
+    textObserver.observe(element);
+});
 
 //top-gallery
 const show = (entries, obs) => {
@@ -30,9 +32,9 @@ const show = (entries, obs) => {
         if(entry.isIntersecting){
             const keyframes = {
                 opacity: [0, 1],
-                translate: ['0 150px', 0]
+                translate: ['0 120px', 0]
             }
-            entries[0].target.animate(keyframes, 2000);
+            entries[0].target.animate(keyframes, 1000);
 
             //一度表示されたら止める
             obs.unobserve(entry.target);
