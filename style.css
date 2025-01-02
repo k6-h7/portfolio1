@@ -13,7 +13,10 @@ body {
     width: 100%;
     margin: 0 auto;
 }
-
+a {
+    text-decoration: none;
+    color: inherit;
+}
 .textAnimation{
     text-align: center;
     margin: 15vh 0 5vh 0;
@@ -336,7 +339,7 @@ body {
 .about-me {
     margin: 20px 5vw;
 }
-/* 作品ページ */
+/* 作品集 */
 .page-title {
     padding: 10px;
     text-align: center;
@@ -370,6 +373,27 @@ body {
 
 .img-item p {
     text-align: center;
+}
+/* 各作品 */
+.main-visual {
+    width: 80vw;
+    margin: 5vh auto;
+}
+.main-visual img {
+    width: 100%;
+}
+.main-visual h3 {
+    padding: 5px 0;
+    margin: 0;
+}
+.main-visual h6 {
+    margin: 0;
+    margin-bottom: 2vh;
+}
+.main-visual p {
+    margin: 0;
+    font-size: 0.7rem;
+    color: #115d89;;
 }
 
 
@@ -479,10 +503,13 @@ body {
     }
     /* top gallery */
     .top-gallery{
-        display: flex;
         margin: 20px 0;
     }
-    #top-gallery-left {
+    .top-gallery a {
+        display: flex;
+        justify-content: center;
+    }
+    a#top-gallery-left {
         flex-direction:row-reverse
     }
     .top-gallery .top-images {
