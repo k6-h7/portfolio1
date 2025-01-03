@@ -22,6 +22,9 @@ a {
     margin: 15vh 0 5vh 0;
     opacity: 0;
 }
+.page-title {
+    margin: 20px 3vw;
+}
 /* loading */
 
 .loading {
@@ -175,7 +178,12 @@ a {
     background-image: linear-gradient(0deg, rgba(255, 255, 255, 0),rgba(0,175,204,0.9), #115d89, #001e43, #080f1c);
     overflow: hidden; /* 星が枠外にはみ出すのを防ぐ */
   }
-  
+.stars h2 {
+    color: white;
+    position: relative;
+    top: 50%;
+    text-align: center;
+}
 /* 星のスタイル */
 .star {
     position: absolute;
@@ -186,7 +194,7 @@ a {
     opacity: 0;
     animation: twinkle 5s infinite;
 }
-  
+
   /* 星がキラキラ光るアニメーション */
   @keyframes twinkle {
     0% {
@@ -340,25 +348,27 @@ a {
     margin: 20px 5vw;
 }
 /* 作品集 */
-.page-title {
-    padding: 10px;
-    text-align: center;
-}
 #gallery {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
     margin: 2vw;
+    grid-auto-flow: row; /* アイテムが順番に左上から配置されるようにする */
 }
+
 .img-item {
     opacity: 0;
     filter: blur(10px);
+    transition: opacity 0.6s ease, filter 0.6s ease;
     width: 100%;
+    display: block; /* アイテムの順番を維持するためにブロック要素に設定 */
 }
+
 .img-item a {
     text-decoration: none;
-    color: inherit; 
+    color: inherit;
 }
+
 .img-item img {
     width: 100%;
     height: auto;
@@ -369,12 +379,33 @@ a {
 .img-item img:hover {
     cursor: pointer;
     opacity: 0.7;
-    transform:scale(1.03);
+    transform: scale(1.03);
 }
 
 .img-item p {
     text-align: center;
 }
+#filters {
+    margin: 20px 3vw;
+}
+#filters .filter {
+    cursor: pointer;
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    border: none;
+}
+
+#filters .filter.active {
+    background-color: #115d89; 
+    color: white; 
+}
+
+  
+
+
 /* 各作品 */
 .work {
     width: 80vw;
@@ -501,6 +532,12 @@ a {
     .top-gallery {
         margin: 20px 5vw;
     }
+
+    #filters .filter:hover {
+        color: #115d89;
+        border: solid;
+    }
+
 }
 
 /* コンピュータ用 1025px以上〜 */
@@ -549,5 +586,8 @@ a {
     }
     .img-item img:hover {
         transform:scale(1.05);
+    }
+    #filters .filter {
+        padding: 5px 10px;
     }
 }
